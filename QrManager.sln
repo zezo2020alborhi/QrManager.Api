@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrManager.Api", "QrManager.Api\QrManager.Api.csproj", "{05B4F018-03B3-4C43-A6F9-9D4C739E4AD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrManager.Api.Tests", "QrManager.Api.Tests\QrManager.Api.Tests.csproj", "{B918CD0B-A98E-4BA0-B425-B38922DA461E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05B4F018-03B3-4C43-A6F9-9D4C739E4AD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B4F018-03B3-4C43-A6F9-9D4C739E4AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B4F018-03B3-4C43-A6F9-9D4C739E4AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B4F018-03B3-4C43-A6F9-9D4C739E4AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B918CD0B-A98E-4BA0-B425-B38922DA461E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B918CD0B-A98E-4BA0-B425-B38922DA461E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B918CD0B-A98E-4BA0-B425-B38922DA461E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B918CD0B-A98E-4BA0-B425-B38922DA461E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

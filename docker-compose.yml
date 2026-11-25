@@ -1,0 +1,40 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - ./database/init.sql:/seed/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  api:
+    build:
+      context: ./QrManager.Api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__SqlServer: Server=sqlserver,1433;Database=QrManager;User Id=sa;Password=${SA_PASSWORD};Encrypt=False;TrustServerCertificate=True
+      Security__AdminApiKey: ${ADMIN_API_KEY}
+      Security__IpHashSalt: ${IP_HASH_SALT}
+      GoogleDrive__ClientId: ${GOOGLE_DRIVE_CLIENT_ID}
+      GoogleDrive__ClientSecret: ${GOOGLE_DRIVE_CLIENT_SECRET}
+      GoogleDrive__RedirectUri: ${GOOGLE_DRIVE_REDIRECT_URI}
+      GoogleDrive__SuccessRedirectUri: ${GOOGLE_DRIVE_SUCCESS_REDIRECT_URI}
+    ports:
+      - "8080:8080"
+    volumes:
+      - data_protection_keys:/var/qrmanager/keys
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+
+volumes:
+  sqlserver_data:
+  data_protection_keys:
